@@ -1,6 +1,8 @@
 # prerender-test
 
-You can try to prefetch/preload/prerender, but...
+You open `index.html?API_KEY=${API_KEY of bing-image-search-api}`
+
+so, you can try to prefetch/preload/prerender, but...
 
 
 * prefetch sample
