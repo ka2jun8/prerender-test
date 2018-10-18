@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <title>Resource Hints test</title>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <!--for french.html-->
+    <link rel="prefetch" href="./french.html"/>
+    <!--for italian.html-->
+    <link rel="preload" href="http://www.europeword.com/images/italy/italian-flag.jpg" as="image"/>
+    <link rel="preload" href="https://media.buzzle.com/media/images-en/gallery/culture/italian/1200-173263069-italian-architecture-colosseum.jpg" as="image"/>
+    <link rel="preload" href="https://sapurebredpets.co.za/wp-content/uploads/2016/07/italian-mastiff-cane-corso.jpg" as="image"/>
+    <!--for coffee.html-->
+    <link rel="prerender" href="./coffee.html"/>
+  </head>
+  <body>
+    <h2>Resource Hints test</h2>
+    <div style="display: flex; flex-direction: column;">
+      <a id="link1" href="./french.html"> > French (prefetch)</a>
+      <a id="link2" href="./italian.html"> > Italian (preload)</a>
+      <a id="link3" href="./coffee.html"> > Coffee (prerender)</a>
+    </div>
+    <script>
+      const params = new URLSearchParams(window.location.search);
+      const API_KEY = params.get("API_KEY");
+      if(!API_KEY) {
+        alert("You need a API_KEY query in this URL", window.location.pathname);
+      } else {
+        const addKeyOnURL = (e) => {
+          e.preventDefault();
+          window.location.href = e.target.href + window.location.search;
+        };
+        document.getElementById("link1").onclick = addKeyOnURL;
+        document.getElementById("link2").onclick = addKeyOnURL;
+        document.getElementById("link3").onclick = addKeyOnURL;
+      }
+    </script>
+  </body>
+</html>
